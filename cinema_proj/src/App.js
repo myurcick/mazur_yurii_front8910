@@ -1,22 +1,28 @@
 // src/App.jsx
 import React from 'react';
-import MovieList from './components/MovieList';
-import { movies } from './data/movies';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Booking from './pages/Booking';
 import './index.css';
 
 function App() {
   return (
-    <div className="app">
-      <header>
-        <h1>Кінопоказ Тижня</h1>
-      </header>
-      <main>
-        <MovieList movies={movies} />
-      </main>
-      <footer>
-        <p>© 2023 Кінотеатр "Реакт". Всі права захищені.</p>
-      </footer>
-    </div>
+    <Router>
+      <div className="app">
+        <header>
+          <h1>Cinema React</h1>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/booking/:id" element={<Booking />} />
+          </Routes>
+        </main>
+        <footer>
+          <p>© 2023 Cinema React. All rights reserved.</p>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
